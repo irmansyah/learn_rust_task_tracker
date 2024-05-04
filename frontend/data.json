@@ -1,0 +1,64 @@
+{
+  "inputs": [
+    {
+      "title": "Type",
+      "variable": "typ", 
+      "input_type": "select", 
+      "question": "What's the Task Type?",
+      "is_required": true,
+      "data": ["Work", "Personal"]
+    },
+    {
+      "title": "Title",
+      "variable": "title", 
+      "input_type": "text", 
+      "question": "What's the Task Title?",
+      "is_required": true,
+      "data": []
+    },
+    {
+      "title": "Description",
+      "variable": "description", 
+      "input_type": "text", 
+      "question": "What's the Task Description?",
+      "is_required": false,
+      "data": []
+    },
+    {
+      "title": "Due Date",
+      "variable": "due_date", 
+      "input_type": "date", 
+      "question": "What's the Task Due Date?",
+      "is_required": true,
+      "data": []
+    },
+    {
+      "title": "Status",
+      "variable": "status", 
+      "input_type": "select", 
+      "question": "What's the Task Status?",
+      "is_required": true,
+      "data": ["Todo", "Bug", "Doing", "Done"]
+    },
+    {
+      "title": "Priority",
+      "variable": "priority", 
+      "input_type": "select", 
+      "question": "What's the Task Priority?",
+      "is_required": true,
+      "data": ["Low", "Medium", "High"]
+    }
+  ],
+  "apis": [
+    {
+      "title": "Get Data",
+      "type": "GET",
+      "url": "http://localhost:8100/api/todos"
+    },
+    {
+      "title": "Post Data",
+      "type": "POST",
+      "url": "http://localhost:8100/api/todos"
+    }
+  ]
+}

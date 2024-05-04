@@ -1,0 +1,4 @@
+[
+    {"name": "API 2 Endpoint 1", "url": "https://api2.example.com/endpoint1"},
+    {"name": "API 2 Endpoint 2", "url": "https://api2.example.com/endpoint2"}
+]
