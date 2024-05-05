@@ -34,7 +34,6 @@ pub enum TaskType {
 	Work,
 	Personal,
 }
-sqlb::bindable!(TaskType);
 // endregion: Task Types
 
 #[derive(sqlx::Type, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -47,7 +46,6 @@ pub enum TaskStatus {
 	Testing,
 	Done,
 }
-sqlb::bindable!(TaskStatus);
 // endregion: Task Statuses
 
 #[derive(sqlx::Type, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -58,8 +56,11 @@ pub enum TaskPriority {
 	Medium,
 	High,
 }
-sqlb::bindable!(TaskPriority);
 // endregion: Task Priorities
+
+sqlb::bindable!(TaskType);
+sqlb::bindable!(TaskStatus);
+sqlb::bindable!(TaskPriority);
 
 // region:    TaskMac
 pub struct TaskMac;

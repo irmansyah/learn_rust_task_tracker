@@ -1,6 +1,5 @@
 mod apis;
 mod commands;
-mod selections;
 
 use std::env;
 

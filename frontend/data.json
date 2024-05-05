@@ -47,7 +47,7 @@
       "question": "What's the Task Priority?",
       "is_required": true,
       "data": ["Low", "Medium", "High"]
-    }
+    } 
   ],
   "apis": [
     {

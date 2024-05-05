@@ -2,18 +2,6 @@ use std::io;
 
 use crate::apis::api_task::{self, input_user, ApiData, TaskInput, UserSelection};
 
-use serde::Serialize;
-
-#[derive(Debug, Serialize)]
-struct Task {
-	typ: String,
-	title: String,
-	description: String,
-	due_date: String,
-	status: String,
-	priority: String,
-}
-
 pub fn execute() -> Result<(), Box<dyn std::error::Error>> {
 	let task_data_json = api_task::get_apis("data.json", "inputs")?;
 
@@ -24,19 +12,19 @@ pub fn execute() -> Result<(), Box<dyn std::error::Error>> {
 	};
 
 	let mut transformed_data = serde_json::Map::new();
-	for (index, task) in task_datas.iter().enumerate() {
+	for (_index, task) in task_datas.iter().enumerate() {
 		match input_user(task) {
 			Ok(selection) => match selection {
-				UserSelection::Text(selected_value) => {
-					transformed_data.insert(task.variable.clone(), serde_json::Value::String(selected_value.clone()));
+				UserSelection::Text(value) => {
+					transformed_data.insert(task.variable.clone(), serde_json::Value::String(value.clone()));
 				}
-				UserSelection::Date(selected_date) => {
+				UserSelection::Date(date) => {
 					transformed_data.insert(
 						task.variable.clone(),
-						serde_json::Value::String(selected_date.to_string().clone()),
+						serde_json::Value::String(date.to_string().clone()),
 					);
 				}
-				UserSelection::MultiText(selected_values) => {}
+				UserSelection::MultiText(_values) => {}
 			},
 			Err(err) => {
 				eprintln!("Error: {}", err);
@@ -45,7 +33,7 @@ pub fn execute() -> Result<(), Box<dyn std::error::Error>> {
 	}
 
 	let transformed_json = serde_json::to_string_pretty(&transformed_data)?;
-	println!("tranformed_json : {}", transformed_json);
+	println!("{}", transformed_json);
 
 	println!("Is this data correct? (yes/no)");
 	let mut confirm_input = String::new();
